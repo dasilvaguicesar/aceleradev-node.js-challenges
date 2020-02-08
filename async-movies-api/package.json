@@ -1,0 +1,32 @@
+{
+  "name": "codenation-node-bootcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "clear-movies": "rm -f files/views/*.html",
+    "start-movies-server": "node files/http.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "convert-csv-to-json": "0.0.15",
+    "csvjson": "^5.1.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "request": "^2.88.0",
+    "supertest": "^4.0.2"
+  }
+}
