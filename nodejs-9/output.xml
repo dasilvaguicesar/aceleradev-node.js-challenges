@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" time="1.978">
+  <testsuite name="GET /v1/students should" errors="0" failures="0" skipped="0" timestamp="2020-02-11T02:07:36" time="1.292" tests="5">
+    <testcase classname="GET /v1/students should return all students" name="GET /v1/students should return all students" time="0.094">
+    </testcase>
+    <testcase classname="GET /v1/students/:id should return student based on id" name="GET /v1/students/:id should return student based on id" time="0.038">
+    </testcase>
+    <testcase classname="POST /v1/students should create a new occurence" name="POST /v1/students should create a new occurence" time="0.07">
+    </testcase>
+    <testcase classname="PATCH /v1/students/:id should update occurrence based on id" name="PATCH /v1/students/:id should update occurrence based on id" time="0.038">
+    </testcase>
+    <testcase classname="DELETE /v1/students/:id should delete occurrence based on id" name="DELETE /v1/students/:id should delete occurrence based on id" time="0.032">
+    </testcase>
+  </testsuite>
+</testsuites>
