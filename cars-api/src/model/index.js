@@ -34,10 +34,7 @@ const cars = {
     db[id] = Object.assign(
       schema,
       data,
-      {created_at: new Date(), updated_at: new Date() }
-      /* { created_at: new Date(), updated_at: new Date() },
-      schema,
-      data */
+      { created_at: new Date(), updated_at: new Date() },
     )
 
     updateDB(db)
@@ -57,9 +54,6 @@ const cars = {
       { ...db[id]},
       data,
       {updated_at: new Date() }
-      /* { updated_at: new Date() },
-      { ...db[id] },
-      data */
     )
 
     return resolve(db[id])

@@ -11,30 +11,102 @@ const { app } = require('../src/server.js')
 const { populateTable, cleanTable, connection } = require('./utils')
 
 // Lembrando que vc pode usar esses hooks dentro do escopo das describes tbm!
-beforeAll(() => { /* Quel tal limpar o banco de teste? */ })
+beforeAll(() => {
+    cleanTable('students_test')
+})
 
-beforeEach(() => { /* O que vc pode fazer ANTES de cada suite de testes ser executada? */ })
+beforeEach(() => {
+    populateTable('students_test', {
+        'name': 'Guilherme Cesar',
+        'surname': 'Da Silva',
+        'email': 'dasilvaguilhermecesar@gmail.com',
+        'age': 31,
+        'gender': 'Masculino',
+        'class': 'Node.js',
+        'is_employed': true,
+        'city': 'Campinas'
+    })
+})
 
-afterEach(() => { /* O que vc pode fazer DEPOIS de cada suite de testes ser executada? */ })
+afterEach(() => {
+    cleanTable('students_test')
+})
 
-afterAll(() => { /* O que vc pode fazer DEPOIS que todas as suites foram executadas? */ })
+afterAll(() => {
+    connection.end()
+})
 
-describe('GET /v1/students should', () => {
-  // ...
+describe('GET /v1/students should..', () => {
+
+    test('return 200 as status code and an object with all itens', async () => {
+
+        const res = await request(app).get('/v1/students')
+        expect(res.statusCode).toBe(200)
+        expect(res.body).toMatchObject([{
+            'name': 'Guilherme Cesar',
+            'surname': 'Da Silva',
+            'email': 'dasilvaguilhermecesar@gmail.com',
+            'age': 31,
+            'gender': 'Masculino',
+            'class': 'Node.js',
+            'is_employed': 1,
+            'city': 'Campinas'
+        }])
+    })
+
 })
 
 describe('GET /v1/students/:id should', () => {
-  // ...
+    
+    test('return 200 as status code and an object by id', async () => {
+
+        const res = await request(app).get('/v1/students/1')
+        expect(res.statusCode).toBe(200)
+        expect(res.body).toMatchObject([{
+        'name': 'Guilherme Cesar',
+        'surname': 'Da Silva',
+        'email': 'dasilvaguilhermecesar@gmail.com',
+        'age': 31,
+        'gender': 'Masculino',
+        'class': 'Node.js',
+        'is_employed': 1,
+        'city': 'Campinas'}])
+    })
 })
 
+
 describe('POST /v1/students should', () => {
-  // ...
+
+    test('return 201 as status code and a message', async () => {
+
+        const res = await request(app).post('/v1/students').send({
+            'name': 'Guilherme Cesar',
+            'surname': 'Da Silva',
+            'email': 'dasilvaguilhermecesar@gmail.com',
+            'age': 31,
+            'gender': 'Masculino',
+            'class': 'Node.js',
+            'is_employed': 1,
+            'city': 'Campinas'
+        })
+        expect(res.statusCode).toBe(201)
+        expect(res.body).toEqual({ success: 'A new record has been created.' })
+    })
 })
 
 describe('PATCH /v1/students/:id should', () => {
-  // ...
+    
+    test('return 200 as status code and a message', async () => {
+        const res = await request(app).patch('/v1/students/1').send({'age': 32,})
+        expect(res.statusCode).toBe(200)
+        expect(res.body).toMatchObject({success: 'The record has been updated.'})
+    })
 })
 
 describe('DELETE /v1/students/:id should', () => {
-  // ...
+    
+    test('return 204 as status code and a message', async () => {
+        const res = await request(app).delete('/v1/students/1')
+        expect(res.statusCode).toBe(204)
+    })
 })

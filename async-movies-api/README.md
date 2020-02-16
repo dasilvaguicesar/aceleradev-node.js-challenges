@@ -26,8 +26,6 @@ Executar servidor web (caso não existam, arquivos .html serão gerados durante 
 *npm run start-movies-server*
 
 
-
-
 Visualizar no navegador:
 
 http://localhost:3000/movies

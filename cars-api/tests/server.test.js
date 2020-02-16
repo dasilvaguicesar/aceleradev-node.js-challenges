@@ -11,8 +11,10 @@ const {
 beforeAll(() => cleanDB())
 afterAll(() => cleanDB())
 
-/* describe('The API on /v1/cars Endpoint at GET method should...', () => {
+describe('The API on /v1/cars Endpoint at GET method should...', () => {
+
   beforeAll(() => {
+
     populateDB({
       "CAR1580214599567RD121": {
         "created_at": "2020-01-28T12:29:59.567Z",
@@ -105,8 +107,6 @@ describe('The API on /v1/cars Endpoint at POST method should...', () => {
     const res = await request(server.app).post('/v1/cars')
     expect(res.statusCode).toEqual(201)
     expect(Object.keys(res.body)).toMatchObject([
-      'created_at',
-      'updated_at',
       'car_model',
       'description',
       'company',
@@ -114,7 +114,9 @@ describe('The API on /v1/cars Endpoint at POST method should...', () => {
       'year',
       'color',
       'image_url',
+      'created_at',
+      'updated_at',
     ])
   })
+
 })
- */
