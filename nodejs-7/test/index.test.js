@@ -20,7 +20,7 @@ describe('Adoptable Pets API Endpoints...', () => {
     const res = await request(server.app)
       .post('/v1/animals')
 
-    expect(res.statusCode).toEqual(200)
+    expect(res.statusCode).toEqual(201)
   })
 
   test('PATCH /v1/animals/:animalId', async () => {
@@ -34,6 +34,6 @@ describe('Adoptable Pets API Endpoints...', () => {
     const res = await request(server.app)
       .patch('/v1/animals/1')
 
-    expect(res.statusCode).toEqual(200)
+    expect(res.statusCode).toEqual(204)
   })
 })
