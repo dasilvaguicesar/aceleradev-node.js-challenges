@@ -15,7 +15,8 @@ app.get('/v1/animals/:animalId', async (req, res, next) => {
 })
 
 app.post('/v1/animals', async (req, res, next) => {
-  res.status(501).send('Not Implemented')
+  const data = animals.create(req.body)
+  res.status(201).json(data)
 })
 
 app.patch('/v1/animals/:animalId', async (req, res, next) => {
