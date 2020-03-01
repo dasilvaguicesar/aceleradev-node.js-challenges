@@ -141,7 +141,8 @@ StatusCode: 200
       "wage": INTEGER,
       "score": INTEGER(3),
       "createdAt": DATE,
-      "updatedAt": DATE
+      "updatedAt": DATE,
+      "teamId": INT
     }
   ]
 }
@@ -181,7 +182,7 @@ StatusCode: 201
 
 ### /v1/teams/:teamId
 
-Método: PATCH
+Método: PUT
 
 Atualiza os dados de cadastro de time referido no parâmetro `teamId`. Os campos a serem atualizados são opcionais, com exceção do campo `id`.
 
@@ -307,7 +308,7 @@ StatusCode: 201
 
 ### /v1/players/:playerId
 
-Método: PATCH
+Método: PUT
 
 Atualiza os dados de cadastro de jogador(a) referido(a) no parâmetro `playerId`. Os campos a serem atualizados são opcionais, com exceção do campo `id`, claro.
 

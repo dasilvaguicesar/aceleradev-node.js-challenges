@@ -4,37 +4,55 @@ const playersModel = require('../models')['players']
 let Teams = {}
 
 Teams.getAll = async (req, res, next) => {
-  // ...
+  const data = await teamsModel.findAll({
+    include: playersModel
+  })
+  res.status(200).json({
+    total: data.length,
+    data
+  })
 }
 
 Teams.getById = async (req, res, next) => {
-  // ...
+  const { teamId } = req.params
+  const data = await teamsModel.findOne({
+    where: { id : teamId },
+    include: playersModel
+  })
+  res.status(200).json(data)
 }
 
 Teams.getTeamPlayers = async (req, res, next) => {
-  // ...
+  const { teamId } = req.params
+  const data = await playersModel.findAll({
+    where: {teamId: teamId},
+  })
+  res.status(200).json({
+    total: data.length,
+    data
+  })
 }
 
 Teams.create = async (req, res, next) => {
-  // ...
+  const data = await teamsModel.create(req.body)
+  res.status(201).json(data)
 }
 
 Teams.update = async (req, res, next) => {
   const { teamId } = req.params
-  const result = await teamsModel.update(req.body, {
+    await teamsModel.update(req.body, {
     where: { id: teamId }
   })
-
-  res.status(200).json({ result })
+  res.status(200).json({})
 }
 
 Teams.delete = async (req, res, next) => {
   const { teamId } = req.params
-  const result = await teamsModel.destroy({
+  await teamsModel.destroy({
     where: { id: teamId }
   })
 
-  res.status(204).json({ result })
+  res.status(204).json({})
 }
 
 module.exports = Teams
