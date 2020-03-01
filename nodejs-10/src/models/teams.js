@@ -1,4 +1,8 @@
 module.exports = (sequelize, DataTypes) =>
   sequelize.define('teams', {
-    // ... Implemente as colunas de teams
+    name: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    coach: DataTypes.STRING,
+    shieldUrl: DataTypes.STRING,
+    birthYear: DataTypes.INTEGER(4),
   })

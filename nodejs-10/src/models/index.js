@@ -21,7 +21,8 @@ const Teams = sequelize.import(
   path.join(__dirname, 'teams.js')
 )
 
-// Implemente o relacionamento entre Players e Teams aqui...
+Players.belongsTo(Teams)
+Teams.hasMany(Players)
 
 const db = {}
 
